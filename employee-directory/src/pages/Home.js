@@ -28,20 +28,10 @@ class Home extends Component {
     return (
       <div>
         <h1 className="text-center">Employees</h1>
-        {this.state.employees.length > 0 && (
-          <EmployeeTable
-            first={this.state.employees[0].name.first}
-            last={this.state.employees[0].name.last}
-            image={this.state.employees[0].picture.large}
-            phone={this.state.employees[0].phone}
-            email={this.state.employees[0].email}
-          />
-        )}
+        <EmployeeTable list={this.state.employees} />
       </div>
     );
   }
 }
 
 export default Home;
-
-// {this.state.employees.map((employee) => {})}

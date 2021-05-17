@@ -1,12 +1,12 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import TableRow from "../TableRow";
 
-function EmployeeTable(props) {
+function EmployeeTable({ list }) {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
           <th>Picture</th>
           <th>First Name</th>
           <th>Last Name</th>
@@ -15,21 +15,20 @@ function EmployeeTable(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>
-            <img src={props.image} />
-          </td>
-          <td>{props.first}</td>
-          <td>{props.last}</td>
-          <td>{props.phone}</td>
-          <td>{props.email}</td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
+        {list.length > 0 &&
+          list.map((employee) => {
+            return (
+              <TableRow
+                image={employee.picture.large}
+                first={employee.name.first}
+                last={employee.name.last}
+                phone={employee.phone}
+                email={employee.email}
+              />
+            );
+          })}
       </tbody>
     </Table>
   );
 }
-
 export default EmployeeTable;
