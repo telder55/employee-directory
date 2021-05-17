@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Card from "../components/Card";
+import EmployeeTable from "../components/EmployeeTable";
 
 class Home extends Component {
   state = {
@@ -13,12 +14,13 @@ class Home extends Component {
   }
 
   loadUsers = () => {
-    API.getRandomUser()
-      .then((res) =>
+    API.getRandomUsers()
+      .then((res) => {
         this.setState({
           employees: res.data.results,
-        })
-      )
+        });
+        console.log(this.state.employees);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -26,11 +28,20 @@ class Home extends Component {
     return (
       <div>
         <h1 className="text-center">Employees</h1>
-        <h3 className="text-center">View Employees below</h3>
-        <Card image={this.state.image} />
+        {this.state.employees.length > 0 && (
+          <EmployeeTable
+            first={this.state.employees[0].name.first}
+            last={this.state.employees[0].name.last}
+            image={this.state.employees[0].picture.large}
+            phone={this.state.employees[0].phone}
+            email={this.state.employees[0].email}
+          />
+        )}
       </div>
     );
   }
 }
 
 export default Home;
+
+// {this.state.employees.map((employee) => {})}
