@@ -11,7 +11,7 @@ class Home extends Component {
 
   // When the component mounts, load the next dog to be displayed
   componentDidMount() {
-    this.loadNextDog();
+    this.loadUsers();
   }
 
   handleBtnClick = (event) => {
@@ -35,14 +35,14 @@ class Home extends Component {
     }
     // Replace our component's state with newState, load the next dog image
     this.setState(newState);
-    this.loadNextDog();
+    this.loadUsers();
   };
 
-  loadNextDog = () => {
+  loadUsers = () => {
     API.getRandomUser()
       .then((res) =>
         this.setState({
-          image: res.data.message,
+          image: res.data.results[0].picture.large,
         })
       )
       .catch((err) => console.log(err));

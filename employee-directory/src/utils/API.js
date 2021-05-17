@@ -4,19 +4,12 @@ import axios from "axios";
 
 export default {
   getRandomUser: function () {
-    return axios.get({
-      url: "https://randomuser.me/api/",
-      dataType: "json",
-      success: function (data) {
-        console.log(data);
-      },
-    });
-    // axios.get("https://dog.ceo/api/breeds/image/random");
+    return axios.get("https://randomuser.me/api/");
   },
-  // getDogsOfBreed: function(breed) {
-  //   return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
-  // },
-  // getBaseBreedsList: function() {
-  //   return axios.get("https://dog.ceo/api/breeds/list");
-  // }
+  getDogsOfBreed: function (breed) {
+    return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
+  },
+  getBaseBreedsList: function () {
+    return axios.get("https://dog.ceo/api/breeds/list");
+  },
 };
