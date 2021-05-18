@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import EmployeeTable from "../components/EmployeeTable";
 import SearchForm from "../components/SearchForm";
+import SortButton from "../components/SortButton";
 
 class Home extends Component {
   state = {
@@ -37,6 +38,14 @@ class Home extends Component {
     this.setState({ employees: this.filterEmployees(this.state.search) });
   };
 
+  handleButtonClick = () => {
+    const employees = this.state.employees;
+    const employeeSorted = employees.sort((empA, empB) =>
+      empA.name.first > empB.name.first ? 1 : -1
+    );
+    this.setState({ employees: employeeSorted });
+  };
+
   filterEmployees = (query) => {
     return this.state.employees.filter(
       (employee) =>
@@ -54,6 +63,7 @@ class Home extends Component {
           handleInputChange={this.handleInputChange}
           employees={this.state.employees}
         />
+        <SortButton handleButtonClick={this.handleButtonClick} />
         <EmployeeTable list={this.state.employees} />
       </div>
     );
