@@ -12,7 +12,6 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/" component={Home} />
           <Route exact path="/employee-directory" component={Home} />
         </Wrapper>
         <Footer />
