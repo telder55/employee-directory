@@ -19,6 +19,7 @@ function EmployeeTable({ list }) {
           list.map((employee) => {
             return (
               <TableRow
+                key={employee.login.uuid}
                 image={employee.picture.large}
                 first={employee.name.first}
                 last={employee.name.last}

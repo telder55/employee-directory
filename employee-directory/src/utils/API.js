@@ -4,6 +4,12 @@ import axios from "axios";
 
 export default {
   getRandomUsers: function () {
-    return axios.get("https://randomuser.me/api/?page=5&results=10&seed=abc");
+    return axios.get(
+      "https://randomuser.me/api/?page=5&results=100&seed=abc&nat=us"
+    );
   },
 };
+
+// Filter employees based on name
+// Get search value
+// on form submit, call function that filters employees and sets state of results array
